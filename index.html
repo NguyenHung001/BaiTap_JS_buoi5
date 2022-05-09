@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Buổi 5</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #eee;
+        }
+        .wrapper{
+            height: 100vh;
+            width: 100%;
+            background-image: url(https://image.thanhnien.vn/w1024/Uploaded/2022/mffsm/2021_10_21/sinh-vien-ueh-2370.jpeg);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .box{
+            background-color: #000033;
+            color: #fff;
+            border-radius: 10px;
+            border: 1px  ;
+            box-shadow: 0 10px 15px 5px rgba(0, 0, 0, 0.719);
+        }
+        .content{
+            padding: 0 50px;
+        }
+        .row{
+            padding-bottom: 50px;
+        }
+        .col-3{
+            border-right: 1px solid rgba(238, 238, 238, 0.315);
+        }
+        a{
+            color: #CCFFFF;
+            font-weight: 700;
+        }
+        a:hover{
+            color: #CCFFFF;
+        }
+        h1{
+            color: #66FF66;
+            font-weight: 800;
+            font-size: 50px;
+            text-align: center;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(238, 238, 238, 0.315);
+            text-shadow:  0 7px 7px #66FF66;
+        }
+        h3{
+            color: #33FFFF;
+        }
+        .nav-pills .nav-link.active{
+            background-color: #00FF7F;
+            box-shadow: 0 0 10px 2px #00FF7F;
+            color: black;
+            transition: all .3s ease-in-out;
+        }
+        .tab-content>.active{
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+        .diemchuan{
+            height: 28px;
+        }
+        .diemthi3mon,
+        .diemuutien{
+            display: flex;
+            gap: 50px;
+        }
+        .nav-link i{
+            margin-right: 10px;
+        }
+        .diemthi3mon label{
+            display: block;
+            margin-bottom: 0;
+        }
+        select{
+            outline: 0;
+            border: 0;
+            padding: 3px 0;
+            background-color: rgba(238, 238, 238, 0.74);
+            font-weight: 700;
+        }
+        option{
+            text-align: center;
+            font-weight: 600;
+        }
+        label{
+            margin-right: 10px;
+            font-weight: 700;
+        }
+        input{
+            outline: 0;
+            border: none;
+            border-radius: 5px;
+            padding: 2px;
+            padding-left: 10px;
+            background-color: #C8C8C8;
+        }
+        #bai1 input{
+            width: 130px;
+        }
+        .kv span{
+            font-weight: 700;
+        }
+        .bt{
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        .text span{
+            font-size: 30px;
+            font-weight: 700;
+            color: #66FF66;
+        }
+        .result{
+            margin-top: 20px;
+            position: relative;
+            height: 70px;
+            width: 150px;
+            display: inline-block;
+        }
+        .result button{
+            position: absolute;
+            top: 0;
+            left: 20px;
+            outline: 0;
+            border: 0;
+            width: 100px;
+            height: 45px;
+            background-color: #660033;
+            color: #33FFFF;
+            font-size: 20px;
+            transform: perspective(45px) rotateX(10deg);
+            box-shadow: 0 6px 5px #33FFFF;
+            margin-top: -2px;
+            transition: all .1s;
+        }
+        .result button:hover{
+            margin-top: 2px;
+            box-shadow: 0 4px 3px #33FFFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container pt-5">
+            <div class="box">
+                <div class="content">
+                    <h1>Bài tập JavaScript buổi 5</h1>
+                    <div class="row">
+                        <div class="col-3">
+                          <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" >
+                            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#bai1">
+                                <i class="fa-solid fa-address-book"></i>
+                                Quản lý tuyển sinh</a>
+                            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#bai2">
+                                <i class="fa-solid fa-chart-line"></i>
+                                Tính tiền điện</a>
+                          </div>
+                        </div>
+                        <div class="col-9">
+                          <div class="tab-content" id="v-pills-tabContent">
+                            <div class="tab-pane fade show active" id="bai1">
+                                <h3>Nhập thông tin thí sinh</h3>
+                                <div class="diemchuan">
+                                    <label for="diemchuan">Điểm chuẩn của hội đồng:</label>
+                                    <input type="number" id="diemchuan">
+                                </div>
+                                <div class="diemthi3mon">
+                                    <div class="mon1">
+                                        <label for="mon1">Điểm thi môn 1:</label>
+                                        <input id="mon1" type="number">
+                                    </div>
+                                    <div class="mon2">
+                                        <label for="mon2">Điểm thi môn 2:</label>
+                                        <input id="mon2" type="number">
+                                    </div>
+                                    <div class="mon3">
+                                        <label for="mon3">Điểm thi môn 3:</label>
+                                        <input id="mon3" type="number">
+                                    </div>
+                                </div>
+                                <div class="diemuutien">
+                                    <div class="kv">
+                                        <span>Chọn khu vực: </span>
+                                        <select id="khuvuc">
+                                            <option>--Chọn khu vực--</option>
+                                            <option value="kv1">Khu vực A</option>
+                                            <option value="kv2">Khu vực B</option>
+                                            <option value="kv3">Khu vực C</option>
+                                        </select>
+                                    </div>
+                                    <div class="doituong">
+                                        <span>Chọn đối tượng: </span>
+                                        <select id="doituong">
+                                            <option>--Chọn đối tượng--</option>
+                                            <option value="dt1">Đối tượng 1</option>
+                                            <option value="dt2">Đối tượng 2</option>
+                                            <option value="dt3">Đối tượng 3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="bt">
+                                    <div class="result">
+                                        <button onclick="tinh()">Kết quả</button>
+                                    </div>
+                                    <div class="text">
+                                        <span id="result1"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="bai2">
+                                <h3>Nhập thông tin tiêu thụ điện</h3>
+                                <div class="name">
+                                    <label for="name">Tên:</label>
+                                    <input type="text" id="name">
+                                </div>
+                                <div class="sokw">
+                                    <label for="soKW">Số KW:</label>
+                                    <input type="number" id="soKW">
+                                </div>
+                                <div class="bt">
+                                    <div class="result">
+                                        <button onclick="tinhTienDien()">Kết quả</button>
+                                    </div>
+                                    <div class="text">
+                                        <span id="result2"></span>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
