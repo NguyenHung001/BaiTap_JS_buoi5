@@ -4,8 +4,8 @@ function tinh(){
     let diemMon1 = Number(document.getElementById('mon1').value);
     let diemMon2 = Number(document.getElementById('mon2').value);
     let diemMon3 = Number(document.getElementById('mon3').value);
-    let khuVuc = document.getElementById('khuvuc');
-    let doiTuong = document.getElementById('doituong');
+    let khuVuc = document.getElementById('khuvuc').value;
+    let doiTuong = document.getElementById('doituong').value;
     let kqBai1 = document.getElementById('result1');
     let diemTong = 0;
     let tong3Mon = diemMon1 + diemMon2 + diemMon3;
@@ -20,22 +20,32 @@ function tinh(){
         kqBai1.innerHTML = 'Thí sinh thi trượt !';
         kqBai1.style.color = 'red';
     }
-    console.log(diemChuan,diemMon1,diemMon2,diemMon3)
+    console.log(diemTong)
 }
 function tongDiem(mon1,mon2,mon3,kv,dt,tong){
     var result;
 //-------------->
     if(mon1==0 || mon2==0 || mon3==0){
         result = 0;
-    }else if(kv=='kv1'){
+        console.log(result)
+    }else if(kv == 'kv0'){
+        result = tong;
+        console.log(result)
+    }else if(kv == 'kv1'){
         result = tong + 2;
-    }else if(kv=='kv2'){
+        console.log(result)
+    }else if(kv == 'kv2'){
         result = tong + 1;
+        console.log(result)
     }else{
         result = tong + 0.5;
+        console.log(result)
     }
+
     if(result == 0){
         return 0;
+    }else if(dt == 'dt0'){
+        return result;
     }else if(dt == 'dt1'){
         return result + 2.5;
     }else if(dt == 'dt2'){
