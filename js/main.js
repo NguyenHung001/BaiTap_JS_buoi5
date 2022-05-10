@@ -20,26 +20,20 @@ function tinh(){
         kqBai1.innerHTML = 'Thí sinh thi trượt !';
         kqBai1.style.color = 'red';
     }
-    console.log(diemTong)
 }
 function tongDiem(mon1,mon2,mon3,kv,dt,tong){
     var result;
 //-------------->
     if(mon1==0 || mon2==0 || mon3==0){
         result = 0;
-        console.log(result)
     }else if(kv == 'kv0'){
         result = tong;
-        console.log(result)
     }else if(kv == 'kv1'){
         result = tong + 2;
-        console.log(result)
     }else if(kv == 'kv2'){
         result = tong + 1;
-        console.log(result)
     }else{
         result = tong + 0.5;
-        console.log(result)
     }
 
     if(result == 0){
